@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería de imágenes - Lab 9 (con autenticación)</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Galería de imágenes (S3 + Cognito)</h1>
+  <div id="userBar" class="hidden">
+    <span id="userEmail"></span>
+    <button id="logoutBtn">Cerrar sesión</button>
+  </div>
+</header>
+
+<main>
+  <section id="authPanel">
+    <div class="authTabs">
+      <button class="tabBtn active" data-tab="loginTab">Iniciar sesión</button>
+      <button class="tabBtn" data-tab="registerTab">Registrarse</button>
+      <button class="tabBtn" data-tab="confirmTab">Confirmar código</button>
+    </div>
+
+    <div id="loginTab" class="tabPanel active">
+      <h2>Iniciar sesión</h2>
+      <input type="email" id="loginEmail" placeholder="Correo electrónico">
+      <input type="password" id="loginPassword" placeholder="Contraseña">
+      <button id="loginBtn">Entrar</button>
+      <p id="loginStatus" class="status"></p>
+    </div>
+
+    <div id="registerTab" class="tabPanel">
+      <h2>Crear cuenta</h2>
+      <input type="email" id="regEmail" placeholder="Correo electrónico">
+      <input type="password" id="regPassword" placeholder="Contraseña (min. 8 caracteres, 1 mayúscula, 1 número)">
+      <button id="registerBtn">Registrarme</button>
+      <p id="registerStatus" class="status"></p>
+    </div>
+
+    <div id="confirmTab" class="tabPanel">
+      <h2>Confirmar código de verificación</h2>
+      <p>Revisa tu correo: AWS Cognito te envió un código de 6 dígitos.</p>
+      <input type="email" id="confEmail" placeholder="Correo electrónico">
+      <input type="text" id="confCode" placeholder="Código de 6 dígitos">
+      <button id="confirmBtn">Confirmar</button>
+      <p id="confirmStatus" class="status"></p>
+    </div>
+  </section>
+
+  <section id="appPanel" class="hidden">
+    <div id="dropzone">
+      <p>Arrastra una imagen aquí o usa el botón</p>
+      <input type="file" id="file" accept="image/jpeg,image/png,image/webp">
+      <input type="text" id="proyecto" placeholder="Proyecto / cliente (opcional, ej: cliente-acme)">
+      <button id="uploadBtn">Subir imagen</button>
+    </div>
+    <p id="status" class="status"></p>
+
+    <h2>Mis imágenes</h2>
+    <div id="gallery" class="gallery"></div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
